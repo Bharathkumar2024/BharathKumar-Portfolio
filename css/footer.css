@@ -1,0 +1,25 @@
+/* ============================================================
+   footer.css
+============================================================ */
+footer {
+  background: var(--bg-base);
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 0;
+  text-align: center;
+  position: relative; z-index: 2;
+}
+
+.footer-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+}
+
+.footer-logo {
+  font-family: var(--font-mono); font-size: 1.1rem;
+  color: var(--text-primary); text-decoration: none;
+}
+.footer-logo .bracket { color: var(--accent); }
+
+.footer-socials { display: flex; gap: 0.75rem; justify-content: center; }
+
+.footer-copy { color: var(--text-muted); font-size: 0.82rem; font-family: var(--font-mono); }
+.footer-copy span { color: var(--accent); }

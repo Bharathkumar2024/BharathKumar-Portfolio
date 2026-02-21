@@ -1,0 +1,49 @@
+/* ============================================================
+   experience.css
+============================================================ */
+#experience {
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+
+.timeline { position: relative; padding-left: 2.5rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  border-radius: 99px;
+}
+
+.timeline-item { position: relative; margin-bottom: 3rem; }
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item::before {
+  content: ''; position: absolute; left: -2.7rem; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(255, 45, 107, 0.2);
+}
+
+.exp-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.8rem;
+  border-left: 3px solid var(--accent); transition: all 0.3s;
+}
+.exp-card:hover { box-shadow: var(--shadow-glow); border-color: var(--border-strong); }
+
+.exp-header {
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;
+}
+.exp-role { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+.exp-date {
+  font-family: var(--font-mono); font-size: 0.78rem;
+  color: var(--accent); padding: 0.2rem 0.7rem;
+  background: var(--accent-subtle); border-radius: 99px;
+}
+.exp-company { color: var(--accent-2); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1rem; }
+
+.exp-points { list-style: none; }
+.exp-points li {
+  color: var(--text-secondary); font-size: 0.9rem;
+  margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;
+}
+.exp-points li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }

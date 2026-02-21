@@ -1,0 +1,42 @@
+/* ============================================================
+   achievements.css
+============================================================ */
+#achievements {
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.achievements-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.ach-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.8rem;
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.ach-card::before {
+  content: ''; position: absolute; top: -30%; right: -20%;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 45, 107, 0.07), transparent 70%);
+  pointer-events: none;
+}
+.ach-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-glow); transform: translateY(-4px); }
+
+/* Featured card spans 2 columns */
+.ach-card.featured {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #220016, #3d0025);
+  border-color: var(--border-strong);
+}
+
+.ach-icon  { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.ach-num {
+  font-family: var(--font-display); font-size: 2.5rem; font-weight: 800;
+  color: var(--accent); line-height: 1; margin-bottom: 0.3rem;
+}
+.ach-card.featured .ach-num { font-size: 3.5rem; }
+.ach-title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: 0.4rem; }
+.ach-desc  { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5; }
+.ach-date  { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); margin-top: 0.8rem; }
