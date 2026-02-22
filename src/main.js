@@ -5,7 +5,6 @@
 // 1. Global Styles
 import './components/common/variables.css';
 import './components/common/base.css';
-import './components/common/responsive.css';
 
 // 2. Component Styles
 import './components/navbar/navbar.css';
@@ -18,6 +17,9 @@ import './components/achievements/achievements.css';
 import './components/contact/contact.css';
 import './components/footer/footer.css';
 import './components/chat/chat.css';
+
+// 3. Responsive Overrides (Must come last)
+import './components/common/responsive.css';
 
 // 3. HTML Fragments (Vite ?raw imports — inlined at build time)
 import navbarHtml from './components/navbar/navbar.html?raw';
@@ -70,9 +72,47 @@ function injectAndInit() {
    if (window.initNavbar) window.initNavbar();
    if (window.initReveal) window.initReveal();
    if (window.initCounters) window.initCounters();
+   if (window.initProjects) window.initProjects();
    if (window.initContact) window.initContact();
    if (window.initBKChat) window.initBKChat();
    window.dispatchEvent(new Event('content_loaded'));
+
+   // Initialize Back to Top
+   initBackToTop();
+}
+
+function initBackToTop() {
+   const btn = document.getElementById('back-top');
+   if (!btn) return;
+
+   const sections = document.querySelectorAll('section');
+
+   const checkScroll = (e) => {
+      if (e.target.scrollTop > 300) {
+         btn.classList.add('show');
+      } else {
+         btn.classList.remove('show');
+      }
+   };
+
+   // Add scroll listener to each independent section
+   sections.forEach(sec => {
+      sec.addEventListener('scroll', checkScroll);
+   });
+
+   btn.addEventListener('click', () => {
+      // Find the active section (the one with opacity 1)
+      const activeSection = Array.from(sections).find(s => {
+         return window.getComputedStyle(s).opacity === '1';
+      });
+
+      if (activeSection) {
+         activeSection.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+         });
+      }
+   });
 }
 
 // Wait for DOM then inject

@@ -219,33 +219,52 @@
   /* Projects */
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .projects-header {
     flex-direction: column;
     align-items: flex-start;
+    margin-bottom: 2rem;
   }
 
   .projects-filter {
     width: 100%;
+    display: flex;
     overflow-x: auto;
     padding: 0.5rem;
+    gap: 0.5rem;
+    scrollbar-width: none;
+  }
+
+  .projects-filter::-webkit-scrollbar {
+    display: none;
   }
 
   .project-thumb {
-    height: 180px;
+    height: 200px;
   }
 
   .project-body {
-    padding: 1.4rem;
+    padding: 1.5rem;
   }
 
   .project-name {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 
   .project-desc {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .project-links {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .project-link {
+    width: 100%;
   }
 
   /* Education / Timeline */

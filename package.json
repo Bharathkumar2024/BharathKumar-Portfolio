@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test-build": "vite build --minify false",
     "preview": "vite preview"
   },
   "devDependencies": {

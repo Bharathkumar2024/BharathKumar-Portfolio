@@ -41,17 +41,17 @@ function initContact() {
 
     // Basic validation
     if (!name || !email || !message) {
-      showToast('⚠️ Please fill in Name, Email & Message.', 'warn');
+      showToast('! Please fill in Name, Email & Message.', 'warn');
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showToast('📧 Please enter a valid email address.', 'warn');
+      showToast('!! Please enter a valid email address.', 'warn');
       return;
     }
 
-    // Button → loading state
+    // Button -> loading state
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending…';
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
 
     try {
       // Send via EmailJS
@@ -66,7 +66,7 @@ function initContact() {
       // Success state
       submitBtn.classList.add('sent');
       submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message Sent!';
-      showToast('🎉 Message delivered to Bharathkumar! He\'ll reply soon.', 'success');
+      showToast('Success Message delivered to Bharathkumar!', 'success');
 
       // Clear fields
       Object.values(fields).forEach(el => { if (el) el.value = ''; });
@@ -82,7 +82,7 @@ function initContact() {
       console.error('EmailJS error:', err);
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
-      showToast('❌ Failed to send. Please try emailing directly: bharathkumarj037@gmail.com', 'error');
+      showToast('FAILED to send. Please try emailing directly.', 'error');
     }
   });
 }
