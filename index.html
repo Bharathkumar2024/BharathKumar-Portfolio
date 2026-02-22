@@ -52,38 +52,8 @@
   <!-- Entry Point -->
   <script type="module" src="/src/main.js"></script>
 
-  <!-- Content Loader -->
-  <script type="module">
-    async function load(id, url) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const response = await fetch(url);
-      el.innerHTML = await response.text();
-    }
 
-    // Load all sections
-    Promise.all([
-      load('nav-hook', '/src/components/navbar/navbar.html'),
-      load('hero-hook', '/src/components/hero/hero.html'),
-      load('about-hook', '/src/components/about/about.html'),
-      load('skills-hook', '/src/components/skills/skills.html'),
-      load('education-hook', '/src/components/education/education.html'),
-      load('projects-hook', '/src/components/projects/projects.html'),
-      load('achievements-hook', '/src/components/achievements/achievements.html'),
-      load('contact-hook', '/src/components/contact/contact.html'),
-      load('footer-hook', '/src/components/footer/footer.html'),
-      load('chat-hook', '/src/components/chat/chat.html')
-    ]).then(() => {
-      console.log('✨ All fragments loaded');
-      // Must be called FIRST so sections become visible before other inits
-      if (window.initNavbar) window.initNavbar();
-      if (window.initReveal) window.initReveal();
-      if (window.initCounters) window.initCounters();
-      if (window.initContact) window.initContact();
-      if (window.initBKChat) window.initBKChat();
-      window.dispatchEvent(new Event('content_loaded'));
-    });
-  </script>
+
 </body>
 
 </html>
