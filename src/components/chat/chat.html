@@ -1,0 +1,74 @@
+<!-- BK CHAT WIDGET -->
+<div id="bk-chat-widget">
+
+    <!-- Floating Toggle Button -->
+    <button id="bk-chat-toggle" aria-label="Chat with BK">
+        <span class="bk-chat-avatar-open">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="14" fill="url(#bkgrad)" />
+                <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-family="'Sora',sans-serif"
+                    font-weight="800" font-size="11" fill="#fff">BK</text>
+                <defs>
+                    <linearGradient id="bkgrad" x1="0" y1="0" x2="28" y2="28">
+                        <stop offset="0%" stop-color="#ff2d6b" />
+                        <stop offset="100%" stop-color="#c800a1" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </span>
+        <span class="bk-chat-label">Chat with BK</span>
+        <span class="bk-unread-dot" id="bk-unread-dot"></span>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="bk-chat-window" class="bk-chat-closed">
+        <!-- Header -->
+        <div class="bk-chat-header">
+            <div class="bk-header-left">
+                <div class="bk-avatar-ring">
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <circle cx="18" cy="18" r="18" fill="url(#hgrad)" />
+                        <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle"
+                            font-family="'Sora',sans-serif" font-weight="800" font-size="14" fill="#fff">BK</text>
+                        <defs>
+                            <linearGradient id="hgrad" x1="0" y1="0" x2="36" y2="36">
+                                <stop offset="0%" stop-color="#ff2d6b" />
+                                <stop offset="100%" stop-color="#c800a1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="bk-header-info">
+                    <span class="bk-header-name">BK Assistant</span>
+                    <span class="bk-header-status"><span class="bk-online-dot"></span> Online · knows everything about
+                        me</span>
+                </div>
+            </div>
+            <button id="bk-chat-close" aria-label="Close chat">✕</button>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="bk-messages" id="bk-messages">
+            <!-- Injected by JS -->
+        </div>
+
+        <!-- Quick Suggestions -->
+        <div class="bk-suggestions" id="bk-suggestions">
+            <button class="bk-suggestion-chip" data-q="Who is Bharathkumar?">👨‍💻 Who is BK?</button>
+            <button class="bk-suggestion-chip" data-q="What are your recent achievements?">🏆 Achievements</button>
+            <button class="bk-suggestion-chip" data-q="What are your skills?">⚡ Skills</button>
+            <button class="bk-suggestion-chip" data-q="Show me his projects">🚀 Projects</button>
+            <button class="bk-suggestion-chip" data-q="How can I contact you?">📬 Contact</button>
+            <button class="bk-suggestion-chip" data-q="What is your education?">🎓 Education</button>
+        </div>
+
+        <!-- Input Row -->
+        <div class="bk-input-row">
+            <input type="text" id="bk-chat-input" placeholder="Ask anything about Bharathkumar…" autocomplete="off" />
+            <button id="bk-send-btn" aria-label="Send">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+</div>

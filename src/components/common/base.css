@@ -51,32 +51,17 @@ body::before {
 /* ---- Cursor ---- */
 #cursor {
   position: fixed;
-  top: 0;
-  left: 0;
   pointer-events: none;
   z-index: 9999;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: var(--accent);
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s, width 0.2s, height 0.2s;
+  transition: width 0.2s, height 0.2s;
   mix-blend-mode: screen;
 }
 
-#cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 45, 107, 0.55);
-  transform: translate(-50%, -50%);
-  transition: transform 0.18s ease, opacity 0.25s;
-}
+/* cursor-ring removed — was causing lag */
 
 /* ---- Layout ---- */
 section {
@@ -88,6 +73,8 @@ section {
   pointer-events: none;
   transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
   overflow-y: auto;
+  will-change: opacity, transform;
+  transform: translateZ(0);
 }
 
 section.active-view {
@@ -362,4 +349,126 @@ section.active-view {
 #back-top:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 30px rgba(255, 45, 107, 0.55);
+}
+
+/* ============================================================
+   BK Page-Transition Loader
+============================================================ */
+#bk-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--bg-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s;
+  opacity: 1;
+  visibility: visible;
+}
+
+#bk-loader.loader-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.bk-loader-inner {
+  text-align: center;
+  user-select: none;
+}
+
+.bk-loader-logo {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent) 0%, #ff8c69 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.04em;
+  animation: loader-pulse 1.2s ease-in-out infinite alternate;
+  line-height: 1;
+}
+
+.bk-loader-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+  margin-bottom: 2rem;
+}
+
+.bk-loader-bar {
+  width: 160px;
+  height: 3px;
+  background: var(--border);
+  border-radius: 99px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.bk-loader-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #ff8c69);
+  border-radius: 99px;
+  animation: loader-fill 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes loader-pulse {
+  from {
+    opacity: 0.7;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes loader-fill {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   Section Entry Pop-Up Badge
+============================================================ */
+.section-popup {
+  position: fixed;
+  top: 5.5rem;
+  right: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  color: var(--text-primary);
+  padding: 0.55rem 1.2rem;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  z-index: 9000;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(255, 45, 107, 0.2);
+  white-space: nowrap;
+}
+
+.section-popup.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.section-popup span {
+  color: var(--accent);
+  margin-right: 0.4rem;
 }
